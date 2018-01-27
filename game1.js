@@ -16,10 +16,10 @@ function startGame() {
 
 
 function startCombat() {
-
+	var computer = "Grant the Almighty Chicken"
     var userHealth = 40;
 	var grantHealth = 10;
-	var i = 0
+	var grantLives = 0
 	
 	while (userHealth > 0 && grantHealth > 0) {
 	    userHealth -= getDamage();
@@ -32,30 +32,33 @@ function startCombat() {
 	    
 	    if (userHealth <= 0){
 	      
-	     	console.log(user + " wins")
+	     	console.log(computer + "wins")
 	     	break;
 	    }
 	    
 	    
 	    if (grantHealth <= 0){
 	    	grantHealth += 10
-	    	i++
-	        console.log("You have beat Grant you need to win " + (3 - i) + " rounds");
-	     	
+	    	grantLives++
+	        
+		    if (grantLives >= 3){
+		      
+		     	console.log( user + " Wins");
+		     	break;
+		    	}
+
+	        console.log("You have beat " + computer +" you need to win " + (3 - grantLives) + " round(s)");
 	     	var userContinue = prompt("Would you like to attack or quit", "attack or quit");
-	     		if(userContinue === "quit"){
+	     	
+	     	if(userContinue === "quit"){
 
 	     			break;
 	     		}
 	    }
 	    
-	    if (i >= 3){
-	      
-	     	console.log("Grant the Mighty Chicken Wins")
-	     	break;
-	    }
 	    
-	  } 
+	    
+	} 
 }
 
 function getDamage() {
